@@ -1,0 +1,300 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Mulish', sans-serif;
+    background-color: #f5f3ef;
+    color: #1a1a1a;
+  }
+  
+  /* ─── Header ─── */
+  .header {
+    background-color: #808b8f;
+    width: 100%;
+    height: 436px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0 40px;
+  }
+  
+  /* ─── Wrappers ─── */
+  .card-wrapper {
+    position: relative;
+    width: 355px;
+    height: 365px;
+    flex-shrink: 0;
+  }
+  
+  /* ─── Gray Place Holders ─── */
+  .header_image {
+    background-color: #808b8f;
+    transform: rotate(-1deg);
+    width: 355px;
+    height: 365px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 6px;
+  }
+  
+  /* ─── Image Containers ─── */
+  .image-container {
+    background-color: #808b8f;
+    position: absolute;
+    overflow: hidden;
+    border-radius: 4px;
+    top: 22px;
+    left: 12px;
+  }
+  
+  .image-container-1 { width: 337px; height: 322px; }
+  .image-container-2 { width: 312px; height: 312px; top: 27px; }
+  .image-container-3 { width: 324px; height: 324px; top: 20px; }
+  
+  .header_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .let-me-be {
+    color: #cc3f38;
+    font-family: 'Ovo', serif;
+    font-size: 110px;
+    line-height: 0.9;
+    margin-top: 24px; 
+    margin-bottom: 24px;
+    margin-left: 380px; 
+  }
+  
+  .demo-sub {
+    font-family: 'Mulish', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: #555;
+    line-height: 1.6;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 380px; 
+  }
+
+  /* ─── Demo Section ─── */
+  .demo-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 80px 80px;
+    gap: 60px;
+    max-width: 1360px;
+    margin: 0 auto;
+  }
+  
+  .demo-text {
+    flex: 1;
+    max-width: 500px;
+  }
+  
+  .demo-upload {
+    flex: 1;
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* ─── Upload Box ─── */
+  .upload-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 260px;
+    border: 1.5px dashed #aaa;
+    border-radius: 12px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+  }
+  
+  .upload-box:hover {
+    border-color: #cc3f38;
+    background-color: #fdf5f5;
+  }
+  
+  .upload-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: #888;
+  }
+  
+  .upload-icon {
+    color: #aaa;
+  }
+  
+  .upload-label {
+    font-size: 15px;
+    font-weight: 400;
+    color: #555;
+  }
+  
+  .upload-link {
+    color: #cc3f38;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .upload-sub {
+    font-size: 12px;
+    color: #aaa;
+  }
+  
+  /* ─── Submit Button ─── */
+  .upload-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 16px;  
+    background-color: #cc3f38;
+    color: #fff;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .upload-btn:hover {
+    background-color: #b03530;
+  }
+  
+  /* ─── Results ─── */ 
+  .results { 
+    display: flex; 
+    flex: 1; 
+    align-items: center; 
+    flex-direction: column; 
+    gap: 16px; margin-top: 10px; 
+  } 
+  
+  .result-img { 
+    width: 100%; 
+    border-radius: 10px; 
+    border: 1px 
+    solid #ddd; 
+    object-fit: contain; }
+
+
+  /* ─── Error ─── */
+  .error-msg {
+    color: #cc3f38;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  /* ─── About section ─── */
+.about-section {
+    padding: 56px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 24px;
+    max-width: 1360px;
+    margin: 0 auto;
+    border-top: 0.5px solid rgba(26, 26, 26, 0.15);
+    animation: fadeUp 0.7s ease 0.4s both;
+  }
+  
+  /* ─── About Cards ─── */
+  .about-card {
+    background-color: #fff;
+    border: 0.5px solid rgba(26, 26, 26, 0.12);
+    border-radius: 12px;
+    padding: 36px 32px;
+  }
+  
+  .about-title {
+    font-family: 'Ovo', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+  }
+  
+  .about-body {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: #555;
+    line-height: 1.8;
+  }
+  
+  /* ─── How it Works ─── */
+  .how-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .how-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding-bottom: 24px;
+    border-bottom: 0.5px solid rgba(26, 26, 26, 0.08);
+  }
+  
+  .how-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  .how-number {
+    font-family: 'Ovo', serif;
+    font-size: 28px;
+    color: #cc3f38;
+    min-width: 36px;
+    line-height: 1;
+  }
+  
+  .how-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .how-heading {
+    font-family: 'Mulish', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+  
+  .how-body {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #666;
+    line-height: 1.7;
+  }
+  
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

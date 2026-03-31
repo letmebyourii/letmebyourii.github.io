@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Let Me Be Your Eyes</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='lmbye_style.css') }}">
+  <script src="{{ url_for('static', filename='lmbye.js') }}" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Ovo&family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ─── HEADER ─── -->
+  <div class='header' id='header'>
+
+    <div class='card-wrapper card-wrapper-1'>
+      <div class='header_image'></div>
+      <div class='image-container image-container-1'>
+        <img src="{{ url_for('static', filename='images/Header1.png') }}" alt="vision 1" class="header_img"/>
+      </div>
+    </div>
+
+    <div class='card-wrapper card-wrapper-2'>
+      <div class='header_image'></div>
+      <div class='image-container image-container-2'>
+        <img src="{{ url_for('static', filename='images/Header2.png') }}" alt="vision 1" class="header_img"/>
+      </div>
+    </div>
+
+    <div class='card-wrapper card-wrapper-3'>
+      <div class='header_image'></div>
+      <div class='image-container image-container-3'>
+        <img src="{{ url_for('static', filename='images/Header3.png') }}" alt="vision 1" class="header_img"/>
+      </div>
+    </div>
+  </div>
+
+   <!-- Project Title -->
+  <div class='project-text'>
+    <div class='let-me-be'>Let Me Be<br>Your Eyes</div>
+    <p class='demo-sub'>Upload an image and let our model describe what it sees.</p>
+  </div>
+
+   <!-- About Section -->
+<section class="about-section">
+
+  <!-- Card 1: What is this -->
+  <div class="about-card">
+    <h2 class="about-title">What is this?</h2>
+    <p class="about-body">Let Me Be Your Eyes uses a YOLO computer vision model to detect and identify objects in images. It is designed as an accessibility tool that helps users understand what is in a photo, a scene, or their surroundings.
+
+      In this demo, a user uploads an image, and the model analyzes it to identify objects and outline them directly in the picture. In a future version, the system could run live on a phone’s camera, allowing a user to point their camera at the world around them and speak the name of an object they want to reach.
+      
+      The model would analyze the live video feed and verbally guide the user around obstacles, helping them navigate safely to their destination.</p>
+  </div>
+
+  <!-- Card 2: How it works -->
+  <div class="about-card about-card--wide">
+    <h2 class="about-title">How it works</h2>
+    <ul class="how-list">
+
+      <li class="how-item">
+        <span class="how-number">01</span>
+        <div class="how-content">
+          <p class="how-heading">Upload an image</p>
+          <p class="how-body">A photo of a room, hallway, or any scene (Accepts JPG, PNG, and WEBP formats).</p>
+        </div>
+      </li>
+
+      <li class="how-item">
+        <span class="how-number">02</span>
+        <div class="how-content">
+          <p class="how-heading">Passes through a neural network </p>
+          <p class="how-body">YOLO processes the entire image in a single forward pass, dividing it into a grid and simultaneously predicts what objects are present, their location and how confident it is in each detection.</p>
+        </div>
+      </li>
+
+      <!--<li class="how-item">
+        <span class="how-number">03</span>
+        <div class="how-content">
+          <p class="how-heading">Segmentation draws the exact shape</p>
+          <p class="how-body"> The model traces the precise pixel-level boundary of each object, rather than a bounding box. For example, this helps to distingush exactly where a sofa ends and the floor begins.</p>
+        </div>
+      </li> -->
+
+      <li class="how-item">
+        <span class="how-number">03</span>
+        <div class="how-content">
+          <p class="how-heading">Results are returned to you</p>
+          <p class="how-body">Every detected object is labeled and outlined giving a readable picture of the space.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+  <!-- ─── Demo Section ─── -->
+  <section class='demo-section'>
+    <div class='demo-upload'>
+      <form action='/img-demo/' method='POST' enctype='multipart/form-data'>
+        <label class='upload-box' id='upload-box'>
+          <input type='file' name='image_uploads' accept='image/*' hidden id='file-input' onchange="showFileName()" />
+          <div class='upload-inner'>
+            <p id="file-name" class="upload-sub"></p>
+            <div class='upload-icon'>
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M16 10v12M10 16h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <p class='upload-label'>
+              Drag & drop or <span class='upload-link'>choose a file</span>
+            </p>
+            <p class='upload-sub'>JPG, PNG, WEBP supported</p>
+          </div>
+        </label>
+        <button type='submit' class='upload-btn'>Run Detection</button>
+      </form>
+
+      <!-- Results -->
+      {% if images_b64 %}
+        <div class="results">
+        {% for img in images_b64 %}
+        <img src="data:image/jpeg;base64,{{ img }}" alt="Detection result" class="result-img"/>
+        {% endfor %}
+        </div>
+        {% endif %}
+
+      {% if error %}
+      <p class='error-msg'>{{ error }}</p>
+      {% endif %}
+    </div>
+  </section>
+
+</body>
+</html>
