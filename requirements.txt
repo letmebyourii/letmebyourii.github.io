@@ -25,14 +25,13 @@ folium==0.20.0
 Frozen-Flask==1.0.2
 ftfy==6.3.1
 glob2==0.7
-gradio==6.4.0
 gradio_client==2.0.3
 graphql-core==3.2.8
 groovy==0.1.2
 h2==4.3.0
 hf-xet==1.2.0
 hpack==4.1.0
-huggingface-hub==0.11.0
+huggingface-hub
 humanize==4.15.0
 Hypercorn==0.18.0
 hyperframe==6.1.0
