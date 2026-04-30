@@ -1,7 +1,7 @@
 # allowing Flask to be used on Github pages
 
 from flask_frozen import Freezer
-from app import app # Import your Flask app
+from app import app 
 
 freezer = Freezer(app)
 
