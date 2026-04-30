@@ -77,7 +77,7 @@ retrying==1.4.2
 s3transfer==0.16.0
 safehttpx==0.1.7
 semantic-version==2.10.0
-setuptools==72.1.0k
+setuptools==72.1.0
 sse-starlette==0.10.3
 sseclient-py==1.9.0
 starlette==0.50.0
