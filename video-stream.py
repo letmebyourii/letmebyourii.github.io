@@ -73,10 +73,6 @@ while True:
                     print('Move forward.',flush=True)
                 
 
-
-
-
-
  
 # When everything done, release the capture
 cap.release()
