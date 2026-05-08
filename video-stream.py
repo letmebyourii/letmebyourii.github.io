@@ -20,6 +20,10 @@ if not cap.isOpened():
     exit()
 while True:
     # Capture frame-by-frame
+
+    if find_object not in model.names.values():
+        print(f'Model cannot detect Object {find_object}')
+    
     ret, frame = cap.read()
  
     # if frame is read correctly ret is True
