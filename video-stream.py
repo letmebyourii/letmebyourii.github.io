@@ -9,7 +9,9 @@ from ultralytics import YOLO
 #replace here for model
 model = YOLO("yolov8n-oiv7.pt")
 
-find_object = 'Human nose'  #placeholder
+find_object = 'Glasses'  #placeholder
+
+feedback=''
 
 
 cap = cv.VideoCapture(0)
