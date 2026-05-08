@@ -9,7 +9,7 @@ from ultralytics import YOLO
 #replace here for model
 model = YOLO("yolov8n-oiv7.pt")
 
-find_object = 'Woman'  #placeholder
+find_object = 'Human nose'  #placeholder
 
 
 cap = cv.VideoCapture(0)
@@ -40,21 +40,37 @@ while True:
     for i in detections:
         all_detections = [i.names[int(j.cls)] for j in i.boxes]
         if find_object not in all_detections:
-            print("Object not found.")
-        for j in i.boxes: #xyxy = (x1, y1) top left corner, (x2,  y2) bottom right corner
-            x1 = j.xyxy.flatten()[0].item()
-            y1 = j.xyxy.flatten()[1].item()
-            x2 = j.xyxy.flatten()[2].item()
-            y2 = j.xyxy.flatten()[3].item()
+            print("Object not found.", flush=True)
+        
+        for j in i.boxes: 
+            #xyxy = (x1, y1) top left corner, (x2,  y2) bottom right corner
+            if find_object==i.names[int(j.cls)]:
+                x1 = j.xyxy.flatten()[0].item()
+                y1 = j.xyxy.flatten()[1].item()
+                x2 = j.xyxy.flatten()[2].item()
+                y2 = j.xyxy.flatten()[3].item()
 
-            dist_topleft = math.dist((x1,y1),(0,0))
-            dist_bottomright = math.dist((x2,y2),(width, height))
+                dist_topleft = math.dist((x1,y1),(0,0))
+                dist_bottomright = math.dist((x2,y2),(width, height))
+                middle_x = height/2
+                middle_y = width/2
 
-            mindist = width*height*0.15
-            # print(mindist, flush=True)
-            # print(dist_topleft*dist_bottomright, flush=True)
-            if find_object==i.names[int(j.cls)] and dist_topleft*dist_bottomright < mindist:
-                print('Object found.', flush=True)
+                mindist = width*height*0.25 #75% of screen should contain the object
+                # print(mindist, flush=True)
+                # print(dist_topleft*dist_bottomright, flush=True)
+            
+                if dist_topleft*dist_bottomright < mindist:
+                    print('Object found.', flush=True)
+                elif x2 < middle_x:
+                    print("Move camera right.", flush=True)
+                elif x1 > middle_x:
+                    print("Move camera left.", flush=True)
+                elif y1 > middle_y and y2 > (height*0.8):
+                    print("Tilt camera down.", flush=True)
+                elif y2 < middle_y and y1 < (height*0.2):
+                    print("Tilt camera up.", flush=True)
+                else:
+                    print('Move forward.',flush=True)
                 
 
 
